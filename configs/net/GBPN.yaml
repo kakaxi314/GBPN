@@ -1,0 +1,20 @@
+name: GBPN
+
+model:
+  _target_: models.GBPN
+  height: ${data.height}
+  width: ${data.width}
+  batch: ${test_batch_size}
+
+ema:
+  _target_: models.EMA
+  decay: 0.9999
+  start_epoch: 10
+
+clip:
+  _target_: utils.clip_grad_norm_
+  max_norm: 0.1
+
+
+
+

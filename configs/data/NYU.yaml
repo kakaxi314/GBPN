@@ -1,0 +1,41 @@
+mean:
+  - 117.
+  - 97.
+  - 91.
+std:
+  - 70.
+  - 71.
+  - 74.
+train_sample_size: 47584
+test_sample_size: 654
+height: 256
+width: 320
+
+
+
+trainset:
+  _target_: datasets.NYU
+  mode: 'train'
+  path: ${data.path}
+  num_point: ${data.npoints}
+  mul_factor: ${data.mul_factor}
+  scale_dep: ${data.scale_dep}
+
+
+testset:
+  _target_: datasets.NYU
+  mode: 'val'
+  path: ${data.path}
+  num_point: ${data.npoints}
+  mul_factor: ${data.mul_factor}
+  scale_dep: ${data.scale_dep}
+  num_mask: ${data.num_mask}
+  fix_seed: ${data.fix_seed}
+
+path: datas/nyudepthv2
+npoints: 500
+scale_factor: 1.00
+mul_factor: 1.0
+scale_dep: true
+num_mask: 1
+fix_seed: false

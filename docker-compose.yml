@@ -1,0 +1,16 @@
+services:
+  gbpn:
+      image: gbpn
+      shm_size: '256gb'
+      stdin_open: true
+      tty: true
+      network_mode: "host"
+      runtime: nvidia
+      command: [ "bash", "-l" ]
+      volumes:
+        - ./:/root/GBPN
+        - ${CHPT_PATH}:/root/GBPN/checkpoints
+        - ${NYU_PATH}:/root/GBPN/datas/nyudepthv2
+        - ${KITTI_PATH}:/root/GBPN/datas/kitti
+      working_dir: /root/GBPN
+
